@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Data;
 using Dapper;
@@ -6,18 +5,18 @@ using gregslist_backend.Models;
 
 namespace gregslist_backend.Repositories
 {
-    public class JobsRepository
+    public class CarsRepository
     {
         private readonly IDbConnection _db;
-        public JobsRepository(IDbConnection db)
+        public CarsRepository(IDbConnection db)
         {
             _db = db;
         }
 
-        internal IEnumerable<Job> Get()
+        internal IEnumerable<Car> Get()
         {
-            string sql = "select * from jobs";
-            return _db.Query<Job>(sql);
+            string sql = "select * from cars";
+            return _db.Query<Car>(sql);
         }
     }
 }

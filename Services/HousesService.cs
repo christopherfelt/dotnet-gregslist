@@ -5,15 +5,15 @@ using gregslist_backend.Repositories;
 
 namespace gregslist_backend.Services
 {
-    public class JobsService
+    public class HousesService
     {
-        private readonly JobsRepository _repo;
-        public JobsService(JobsRepository repo)
+        private readonly HousesRepository _repo;
+        public HousesService(HousesRepository repo)
         {
             _repo = repo;
         }
 
-        internal IEnumerable<Job> Get()
+        internal IEnumerable<House> Get()
         {
             return _repo.Get();
         }

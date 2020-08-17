@@ -8,21 +8,21 @@ namespace gregslist_backend.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-
-    public class JobsController: ControllerBase
+    public class HousesController: ControllerBase
     {
-        private readonly JobsService _js;
-        public JobsController(JobsService js)
+        private readonly HousesService _hs;
+        public HousesController(HousesService hs)
         {
-            _js = js;
+            _hs = hs;
         }
 
+
         [HttpGet]
-        public ActionResult<IEnumerable<Job>> Get()
+        public ActionResult<IEnumerable<House>> Get()
         {
             try
             {
-                return Ok(_js.Get());
+                return Ok(_hs.Get());
             }
             catch (Exception e)
             {

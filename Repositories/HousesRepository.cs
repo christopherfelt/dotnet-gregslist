@@ -6,18 +6,18 @@ using gregslist_backend.Models;
 
 namespace gregslist_backend.Repositories
 {
-    public class JobsRepository
+    public class HousesRepository
     {
         private readonly IDbConnection _db;
-        public JobsRepository(IDbConnection db)
+        public HousesRepository(IDbConnection db)
         {
             _db = db;
         }
 
-        internal IEnumerable<Job> Get()
+        internal IEnumerable<House> Get()
         {
-            string sql = "select * from jobs";
-            return _db.Query<Job>(sql);
+            string sql = "select * from Houses";
+            return _db.Query<House>(sql);
         }
     }
 }
