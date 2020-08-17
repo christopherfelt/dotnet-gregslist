@@ -29,6 +29,31 @@ namespace gregslist_backend.Controllers
                 return BadRequest(e.Message);
             }
         }
+                [HttpPost]
+        public ActionResult<Job> Post([FromBody] Job newJob)
+        {
+            try
+            {
+                return Ok(_js.Create(newJob));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult<Job> Delete(int id)
+        {
+            try
+            {
+                return Ok(_js.Delete(id));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
 
     }
 }

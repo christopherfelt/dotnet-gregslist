@@ -29,6 +29,32 @@ namespace gregslist_backend.Controllers
             }
         }
 
+        [HttpPost]
+        public ActionResult<Car> Post([FromBody] Car newCar)
+        {
+            try
+            {
+                return Ok(_cs.Create(newCar));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult<Car> Delete(int id)
+        {
+            try
+            {
+                return Ok(_cs.Delete(id));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
     
     }
 }

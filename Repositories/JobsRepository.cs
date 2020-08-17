@@ -19,5 +19,32 @@ namespace gregslist_backend.Repositories
             string sql = "select * from jobs";
             return _db.Query<Job>(sql);
         }
+
+        internal Job Create(Job newJob)
+        {
+            string sql = @"
+            INSERT INTO jobs
+            (title, description, hours, rate, imgUrl)
+            VALUES
+            (@Title, @Description, @Hours, @Rate, @ImgUrl);
+            SELECT LAST_INSERT_ID();
+            ";
+            newJob.Id = _db.ExecuteScalar<int>(sql, newJob);
+            return newJob;
+        }
+
+        internal void Delete(int id)
+        {
+            string sql = "DELETE FROM jobs WHERE id = @Id";
+            _db.Execute(sql, new { id });
+        }
+
+        internal Job GetById(int id)
+        {
+            string sql = @"
+                SELECT * FROM jobs
+                WHERE id = @id;";
+            return _db.QueryFirstOrDefault<Job>(sql, new { id });
+        }
     }
 }

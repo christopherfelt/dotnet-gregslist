@@ -30,5 +30,31 @@ namespace gregslist_backend.Controllers
             }
         }
 
+                [HttpPost]
+        public ActionResult<House> Post([FromBody] House newHouse)
+        {
+            try
+            {
+                return Ok(_hs.Create(newHouse));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult<House> Delete(int id)
+        {
+            try
+            {
+                return Ok(_hs.Delete(id));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
     }
 }

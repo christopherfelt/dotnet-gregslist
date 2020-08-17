@@ -17,5 +17,27 @@ namespace gregslist_backend.Services
         {
             return _repo.Get();
         }
+
+        internal House Create(House newHouse)
+        {
+            return _repo.Create(newHouse);
+        }
+
+        internal House Delete(int id)
+        {
+            House exists = Get(id);
+            _repo.Delete(id);
+            return exists;
+        }
+
+        private House Get(int id)
+        {
+            House exists = _repo.GetById(id);
+            if(exists == null){
+                throw new Exception("Invalid Keep Id");
+            }
+            return exists;
+
+        }
     }
 }

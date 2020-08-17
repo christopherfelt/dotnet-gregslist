@@ -18,5 +18,27 @@ namespace gregslist_backend.Services
         {
             return _repo.Get();
         }
+
+        internal Car Create(Car newCar)
+        {
+            return _repo.Create(newCar);
+        }
+
+        internal Car Delete(int id)
+        {
+            Car exists = Get(id);
+            _repo.Delete(id);
+            return exists;
+        }
+
+        private Car Get(int id)
+        {
+            Car exists = _repo.GetById(id);
+            if(exists == null){
+                throw new Exception("Invalid Keep Id");
+            }
+            return exists;
+
+        }
     }
 }
